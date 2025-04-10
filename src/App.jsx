@@ -1,24 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Button } from '@/components/ui/button';
+import { Route, Routes } from 'react-router-dom'
+import Navbar from './components/Navbar' 
+import Login from './components/Auth/Login'
+import Signup from './components/Auth/Signup'
+
+// import Dashboard from './components/Dashboard/Dashboard'  // Add this
+
+// import ProtectedRoute from './components/ProtectedRoute'  // Add this
+import PublicRoute from './components/PublicRoute'
+import './index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-
-      <h1>Real-Time Chat App</h1>
-      <Button className="w-[75%] flex items-center justify-center space-x-2 bg-white text-black border border-gray-300 hover:bg-gray-100 py-2 px-4 rounded-md">Click Me</Button>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <main className="flex-grow">
+        <Navbar />
+        <Routes>
+          {/* Protected Routes */}
+          {/* <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <CourseList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/courses/:id"
+            element={
+              <ProtectedRoute>
+                <CourseDetail />
+              </ProtectedRoute>
+            }
+          /> */}
+          {/* <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute requireInstructor={true}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          /> */}
+          {/* Public Routes */}
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute>
+                <Signup />
+              </PublicRoute>
+            }
+          />
+        </Routes>
+      </main>
     </div>
-    </>
   )
 }
 
 export default App
-
-
-
